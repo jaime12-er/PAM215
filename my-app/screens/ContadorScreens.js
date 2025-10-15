@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   texto:{
     fontFamily:"Time new Roman", 
     fontSize:30,
-    color:'#f72206ff',
+    color:'#483735ff',
     fontWeight:'bold',
     fontStyle:'italic',
     textDecorationLine:'line-through',
@@ -53,14 +53,14 @@ const styles = StyleSheet.create({
   texto2:{
      fontFamily:"Courier", 
     fontSize:40,
-    color:'#16180dff',
+    color:'#5b6435ff',
     fontWeight:'900',
     textDecorationLine:'underline',
 
   },
   contenedorBotones:{
     marginTop:20,
-    flexDirection:"row",
+    flexDirection:"colum",
     gap:15,
   },
 

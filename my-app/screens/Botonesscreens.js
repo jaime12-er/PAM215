@@ -11,7 +11,7 @@ export default function Botonesscreens () {
             <Text style={styles.text}>Control de Luz</Text>
             {/* Controlador ternario */}
             <Text style={[styles.text, { color: esEncendido ? color : 'black' }]}>
-                {esEncendido ? 'Luz encendida' : 'Luz apagada'}
+                {esEncendido ? 'Luz encendida' : 'Luz apagada'} 
             </Text>
             <Switch
                 value={esEncendido}

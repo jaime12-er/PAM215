@@ -83,6 +83,7 @@ const styles = StyleSheet.create({
   titulo: {
     fontFamily: 'Times New Roman',
     fontSize:25,
+    backgroundColor: '#ef3a52ff',
     fontWeight: 'bold',
     textDecorationLine: 'underline',
     marginBottom: 20,

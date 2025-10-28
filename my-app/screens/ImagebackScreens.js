@@ -41,7 +41,7 @@ export default function ImagebackScreens (){
     }
 
 
-
+    D
 
     return (
       <ImageBackground

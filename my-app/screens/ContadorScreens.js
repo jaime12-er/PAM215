@@ -9,6 +9,7 @@ export default function App() {
 
 
   const[contador ,setContador]=useState(0);
+  
 
   return (
 
@@ -60,7 +61,7 @@ const styles = StyleSheet.create({
   },
   contenedorBotones:{
     marginTop:20,
-    flexDirection:"colum",
+    flexDirection:"colu",
     gap:15,
   },
 

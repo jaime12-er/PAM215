@@ -9,7 +9,7 @@ import ActivityScreens from './ActivityScreens';
 import FlatScreens from './FlatScreens';
 import ModaScreens from './ModaScreens';
 import BottomScreens from './BottomScreens';
-import BottomPracticaScreens from './BottompracticasScreens';
+import FlatListySectionListScreens from './flatListySectionListScreens';
  
 
 
@@ -37,8 +37,8 @@ export default function MenuScreen() {
             return <ModaScreens/>;
         case 'bottom':
             return <BottomScreens/>;
-         case 'bottompractica':
-            return <BottomPracticaScreens/>;
+        case 'FlatListySectionList':
+            return <FlatListySectionListScreens/>;
         case 'menu':
             default:
                 return(
@@ -53,6 +53,7 @@ export default function MenuScreen() {
                     <Button onPress={()=>setScreen('moda')} title='pract:moda'></Button>
                     <Button onPress={()=>setScreen('bottom')} title='pract:bottom'></Button>
                     <Button onPress={()=>setScreen('bottompractica')} title='pract:bottompractica'></Button>
+                     <Button onPress={()=>setScreen('FlatListySectionList')} title='pract:FlatListySectionList'></Button>
                     </View>  
                 )      
     }

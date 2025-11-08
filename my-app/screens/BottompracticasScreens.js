@@ -1,5 +1,17 @@
-import React, {useEffect, useState, useRef} from 'react'
-import { Text, StyleSheet, View, Button, Switch, TextInput, Alert, Platform , ImageBackground, Animated, Easing} from 'react-native'
+import React, { useEffect, useState, useRef } from 'react';
+import { 
+    Text, 
+    StyleSheet, 
+    View, 
+    Button, 
+    Switch, 
+    TextInput, 
+    Alert, 
+    Platform, 
+    ImageBackground, 
+    Animated, 
+    Easing 
+} from 'react-native';
 
 export default function BottompracticasScreens() {
     const [cargando, setCargando] = useState(true);
@@ -8,7 +20,7 @@ export default function BottompracticasScreens() {
     const [aceptaTerminos, setAceptaTerminos] = useState(false);
 
     const desvanecido = useRef(new Animated.Value(1)).current;
-    
+
     useEffect(() => {
         const timer = setTimeout(() => {
             Animated.timing(desvanecido, {
@@ -21,53 +33,51 @@ export default function BottompracticasScreens() {
         return () => clearTimeout(timer);
     }, [desvanecido]);
 
-
     const validarEmail = (mail) => {
         const trimmed = (mail || '').trim();
-        const regex = /\S+@\S+\.\S+/;
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return regex.test(trimmed);
     };
 
     const mostrarAlerta = () => {
+        const mostrar = (titulo, mensaje) => {
+            if (Platform.OS === 'web') {
+                alert(`${titulo}\n\n${mensaje}`);
+            } else {
+                Alert.alert(titulo, mensaje, [{ text: 'OK' }]);
+            }
+        };
 
-    const mostrar = (titulo, mensaje) => {
-        if (Platform.OS === 'web') {
-            alert(`${titulo}\n\n${mensaje}`);
-        } else {
-            Alert.alert(titulo, mensaje, [{ text: 'OK' }]);
+        const faltantes = [];
+        if ((nombre || '').trim() === '') faltantes.push('Nombre completo');
+        if ((email || '').trim() === '') faltantes.push('Correo electrónico');
+
+        if (faltantes.length > 0) {
+            mostrar('Campos incompletos', `Por favor llena:\n- ${faltantes.join('\n- ')}`);
+            return;
         }
+
+        if (!validarEmail(email)) {
+            mostrar('Correo inválido', 'Ingresa un correo válido (ej: usuario@dominio.com)');
+            return;
+        }
+
+        if (!aceptaTerminos) {
+            mostrar('Términos y condiciones', 'Debes aceptar los términos para registrarte.');
+            return;
+        }
+
+        mostrar('Registro exitoso', `Nombre: ${nombre.trim()}\nEmail: ${email.trim()}`);
+
+        // Limpiar campos
+        setNombre('');
+        setEmail('');
+        setAceptaTerminos(false);
     };
-
-    const faltantes = [];
-    if ((nombre || '').trim() === '') faltantes.push('Nombre completo');
-    if ((email || '').trim() === '') faltantes.push('Correo electrónico');
-
-    if (faltantes.length > 0) {
-        mostrar('Campos incompletos', `Por favor llena:\n- ${faltantes.join('\n- ')}`);
-        return;
-    }
-
-    if (!validarEmail(email)) {
-        mostrar('Correo inválido', 'Ingresa un correo válido (ej: usuario@dominio.com)');
-        return;
-    }
-
-    if (!aceptaTerminos) {
-        mostrar('Términos y condiciones', 'Debes aceptar los términos para registrarte.');
-        return;
-    }
-
-    mostrar('Registro exitoso', `Nombre: ${nombre.trim()}\nEmail: ${email.trim()}`);
-
-    // Limpiar campos
-    setNombre('');
-    setEmail('');
-    setAceptaTerminos(false);
-};
 
     if (cargando) {
         return (
-            <Animated.View style={[styles.splashContainer, {opacity: desvanecido}]}>
+            <Animated.View style={[styles.splashContainer, { opacity: desvanecido }]}>
                 <ImageBackground
                     source={require('../assets/japon.webp')}
                     resizeMode='contain'
@@ -104,7 +114,7 @@ export default function BottompracticasScreens() {
                     keyboardType="email-address"
                     placeholderTextColor="#666"
                     autoCapitalize="none"
-                />6
+                />
                   
                 <View style={styles.switchContainer}>
                     <Switch
@@ -117,7 +127,7 @@ export default function BottompracticasScreens() {
                 <Button
                     title="Registrarse"
                     onPress={mostrarAlerta}
-                    color="#4c51ddff"
+                    color="#4c51dd"
                 />
             </View>
         </ImageBackground>

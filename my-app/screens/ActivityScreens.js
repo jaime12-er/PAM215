@@ -34,7 +34,7 @@ export default function ActivityScreens () {
         onPress={startLoading}
         />
       </View>
-    );
+    );  
   }
 
 const styles = StyleSheet.create({

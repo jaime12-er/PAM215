@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-export default function Detail({ navigation }) {
+export default function detalle({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.iconRow}>
